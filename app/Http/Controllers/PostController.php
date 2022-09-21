@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -42,13 +42,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+         $validation = Validator::make($request->all(),[
             'title' => 'required',
             'category_id' => 'required',
             'small_description' => 'required|min:10|max:200',
             'description' => 'required|min:500',
             'image' => 'nullable|image',
         ]);
+        if ($validation->fails()) {
+            return redirect()->back()
+                        ->withInput($request->only('description','image'));
+        }
         $image_name = null;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -103,6 +107,7 @@ class PostController extends Controller
         $post = Post::findOrFail($request->id);
         $data = $request->validate([
             'title' => 'required|unique:posts,title,'.$post->id,
+            'title' => 'required|unique:posts,slug,'.$post->id,
             'category_id' => 'required',
             'small_description' => 'required|min:10|max:200',
             'description' => 'required|min:500',

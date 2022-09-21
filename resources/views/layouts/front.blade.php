@@ -107,6 +107,7 @@
         </nav>
       @yield('content')
     </div>
+    @include('components.footer')
     <div id="loader" style="position: absolute;
     top: 50%;left: 50%;transform: translate(-50%,-50%)">
       <div style="background: var(--white) !important" class="spinner-border text-primary" role="status">

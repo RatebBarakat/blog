@@ -16,6 +16,15 @@
     input[type="search"]{
         margin-bottom: 10px;
     }
+    .ck.ck-input {
+    background: var(--input-color);
+    color: var(--blue-color);
+    border: 1px solid var(--ck-color-input-border);
+    min-height: var(--ck-ui-component-min-height);
+    min-width: var(--ck-input-width);
+    padding: var(--ck-spacing-extra-tiny) var(--ck-spacing-medium);
+    transition: box-shadow .1s ease-in-out,border .1s ease-in-out;
+}
 </style>
     @livewireStyles
 
@@ -41,7 +50,16 @@
                             <a href="{{route('admin.categories')}}">categories [{{$category_count}}]</a>
                         </li>
                         <li>
-                            <a href="{{route('admin.posts')}}">posts [{{$post_count}}]</a>
+                            <a style="background: transparent !important" data-toggle="collapse" aria-expanded="false" 
+                            class="dropdown-toggle" href="#pageSubmenu">posts</a>
+                            <ul class="collapse list-unstyled" id="pageSubmenu">
+                                <li>
+                                    <a href="{{route('admin.posts')}}">posts [{{$post_count}}]</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('post.create')}}">create post</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="{{route('admin.comment.report')}}">comment-reports [{{$comment_report_count}}]</a>
@@ -49,8 +67,7 @@
                     {{-- </ul> --}}
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                    {{-- <ul class="collapse list-unstyled" id="pageSubmenu">
+                    {{-- {{-- <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
                             <a href="#">Page 1</a>
                         </li>
@@ -60,7 +77,7 @@
                         <li>
                             <a href="#">Page 3</a>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </li>
                 <li>
                     <a href="#">Portfolio</a>
