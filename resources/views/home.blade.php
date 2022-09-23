@@ -82,11 +82,11 @@ input:focus {
               categories
             </div>
             <ul class="list-group">
-              @foreach ($categories as $cat)
+              {{-- @foreach ($categories as $cat)
               <li class="list-group-item">
                 <a class="text-blue text-decoration-none" href="{{route('category',[$cat->slug])}}">{{$cat->name}}</a>
               </li>
-              @endforeach
+              @endforeach --}}
             </ul>
           </div>
     </div>

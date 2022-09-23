@@ -87,11 +87,11 @@
                     Categories
                   </div>
                   <div class="dropdown-menu nav-dropdown" aria-labelledby="dropdownMenuButton">
-                    @forelse ($categories as $category)
+                    {{-- @forelse ($categories as $category)
                         <a href="{{route('category',[$category->slug])}}" class="dropdown-item">{{$category->name}}</a>
                     @empty
                         no category
-                    @endforelse
+                    @endforelse --}}
                 </div>
               </li>
               <li class="nav-item">
